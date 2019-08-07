@@ -15,10 +15,20 @@ aws-security-viz -- A tool to visualize aws security groups
 * Output to any of the formats that Graphviz supports.
 * EC2 classic and VPC security groups
 
+## BUILD
+```
+  $ gem build aws_security_viz.gemspec
+```
+
 ## INSTALLATION
 ```
-  $ gem install aws_security_viz
+  $ sudo gem install ./aws_security_viz-0.2.2.gem
   $ aws_security_viz --help
+```
+
+## RUN
+```
+  $ aws_security_viz -v vpc-XXXXXXXXXXXXXXX -r us-west-2 --color -f test.png --tag-key Component --tag-value cassandra
 ```
 
 ## DEPENDENCIES

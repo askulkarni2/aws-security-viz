@@ -16,6 +16,8 @@ opts = Optimist::options do
   opt :renderer, "Renderer (#{Renderer.all.join('|')})", :default => 'graphviz'
   opt :source_filter, 'Source filter', :default => nil, :type => :string
   opt :target_filter, 'Target filter', :default => nil, :type => :string
+  opt :tag_key, 'Tag Key to filter on, Tag Value must be provided', :type => :string
+  opt :tag_value, 'Tag Value to filter on, Tag Key must be provided', :type => :string
 end
 
 cmd = ARGV.shift
