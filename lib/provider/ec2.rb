@@ -15,8 +15,13 @@ class Ec2Provider
   end
 
   def security_groups
+    @tag = Aws::EC2::Types::Tag.new()
+    @tag.key = @options[:tag_key]
+    @tag.value = @options[:tag_value]
     @client.describe_security_groups.security_groups.reject { |sg|
       @options[:vpc_id] && sg.vpc_id != @options[:vpc_id]
+    }.select { |sg|
+      @options[:tag_key] && sg.tags.include?(@tag)
     }.collect { |sg|
       Ec2::SecurityGroup.new(sg)
     }
